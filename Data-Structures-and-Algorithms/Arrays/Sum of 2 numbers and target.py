@@ -1,5 +1,4 @@
-Python 3.10.1 (v3.10.1:2cd268a3a9, Dec  6 2021, 14:28:59) [Clang 13.0.0 (clang-1300.0.29.3)] on darwin
-Type "help", "copyright", "credits" or "license()" for more information.
+
 # def sum_numbers(array, target, k) -> list:
 #     if (k > len(array)):
 #         print(k)
@@ -22,7 +21,6 @@ def sum_numbers_brute_force(array, target) -> list:
     for i in range(0, len(array)):
         for j in range(i+1, len(array)):
             current_sum = array[i] + array[j]
-            # print(j)
             if current_sum == target:
                 return [i,j]
     return -1

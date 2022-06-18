@@ -14,7 +14,7 @@ class SingleLinkedList:
     def __init__(self):
         """
         The single linked list is initialised with a head pointer. It is to note that the head of the single linked
-        list has data and next as soon as it becomes a done
+        list has data and next attributes as soon as it becomes a done
         """
         self.head = None
 
