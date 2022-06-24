@@ -13,7 +13,7 @@ class StackArray:
         """
         Check whether the stack is empty. If empty, pass. If not, then remove the last element in the stack (
         implemented in an array)
-        :return: stack without the last element (last element inserted in the stacl)
+        :return: stack without the last element (last element inserted in the stack)
         """
         if self.is_empty():
             return
