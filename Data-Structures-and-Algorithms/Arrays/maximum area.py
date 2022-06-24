@@ -1,13 +1,13 @@
 def maxArea(height) -> int:
     current_area = 0
     for i in range(0, len(height)):
-        for j in range(i+1, len(height)):
-            product = (j-i)*min(height[i], height[j])
-            if (current_area < product):
+        for j in range(i + 1, len(height)):
+            product = (j - i) * min(height[i], height[j])
+            if current_area < product:
                 current_area = product
     return current_area
-    
-    
+
+
 def maxArea_optimized(height) -> int:
     maximum_area = 0
     left_pointer = 0
@@ -15,17 +15,15 @@ def maxArea_optimized(height) -> int:
     while left_pointer < right_pointer:
         width = right_pointer - left_pointer
         min_height = min(height[right_pointer], height[left_pointer])
-        maximum_area = max(maximum_area,(width*min_height))
-        if(height[left_pointer]<height[right_pointer]):
+        maximum_area = max(maximum_area, (width * min_height))
+        if (height[left_pointer] < height[right_pointer]):
             left_pointer += 1
         else:
             right_pointer -= 1
     return maximum_area
-        
-        
-    
-    
-print(maxArea_optimized([1,8,6,2,5,4,8,3,7]))
+
+
+print(maxArea_optimized([1, 8, 6, 2, 5, 4, 8, 3, 7]))
 
 # let’s see the two-pointer approach, here we need to first understand the problem, then need to check where we can start the pointers and how to move them.
 
