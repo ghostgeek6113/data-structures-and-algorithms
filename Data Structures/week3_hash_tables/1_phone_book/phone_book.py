@@ -7,12 +7,15 @@ class Query:
         if self.type == 'add':
             self.name = query[2]
 
+
 def read_queries():
     n = int(input())
     return [Query(input().split()) for i in range(n)]
 
+
 def write_responses(result):
     print('\n'.join(result))
+
 
 def process_queries(queries):
     result = []
@@ -26,7 +29,7 @@ def process_queries(queries):
                 if contact.number == cur_query.number:
                     contact.name = cur_query.name
                     break
-            else: # otherwise, just add it
+            else:  # otherwise, just add it
                 contacts.append(cur_query)
         elif cur_query.type == 'del':
             for j in range(len(contacts)):
@@ -42,6 +45,6 @@ def process_queries(queries):
             result.append(response)
     return result
 
+
 if __name__ == '__main__':
     write_responses(process_queries(read_queries()))
-
