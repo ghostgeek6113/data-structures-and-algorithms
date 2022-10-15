@@ -8,6 +8,7 @@ def max_sliding_window_naive(sequence, m):
 
     return maximums
 
+
 if __name__ == '__main__':
     n = int(input())
     input_sequence = [int(i) for i in input().split()]
@@ -15,4 +16,3 @@ if __name__ == '__main__':
     window_size = int(input())
 
     print(*max_sliding_window_naive(input_sequence, window_size))
-

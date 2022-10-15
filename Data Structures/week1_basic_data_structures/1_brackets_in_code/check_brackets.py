@@ -19,31 +19,30 @@
 # Otherwise, output the 1-based index of the first unmatched closing bracket, and if there are no unmatched closing
 # brackets, output the 1-based index of the first unmatched opening bracket.
 
-from collections import namedtuple
+class Bracket:
+    def __init__(self, symbol, position):
+        self.symbol = symbol
+        self.position = position
 
-Bracket = namedtuple("Bracket", ["char", "position"])
-
-
-def are_matching(left, right):
-    return (left + right) in ["()", "[]", "{}"]
+    def are_matching(self, right):
+        return (self.symbol + right) in ["()", "[]", "{}"]
 
 
 def find_mismatch(text):
     opening_brackets_stack = []
-    for i, next in enumerate(text):
-        if next in "([{":
-            opening_brackets_stack.append(next)
-
-        elif next in ")]}":
-            if len(opening_brackets_stack) > 0:
-                if are_matching(opening_brackets_stack[-1], next):
-                    opening_brackets_stack.pop()
-                else:
-                    return i + 1
-            else:
-                return i + 1
-    if len(opening_brackets_stack) > 0:
-        return len(opening_brackets_stack)
+    for i, symbol in enumerate(text, start=1):
+        if symbol in '([{':
+            opening_brackets_stack.append(Bracket(symbol, i))
+        elif symbol in ')]}':
+            if not opening_brackets_stack:
+                return i
+            top = opening_brackets_stack.pop()
+            if not top.are_matching(symbol):
+                return i
+    if opening_brackets_stack:
+        # print(opening_brackets_stack)
+        top = opening_brackets_stack.pop()
+        return top.position
     return "Success"
 
 
